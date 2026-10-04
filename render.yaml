@@ -1,0 +1,32 @@
+# Render Blueprint — https://render.com/docs/blueprint-spec
+#
+# Deploy: Dashboard > New > Blueprint > aponte para este repositorio.
+#
+# ATENCAO (plano free):
+#   O plano free NAO suporta disco persistente. O SQLite fica em /app/data,
+#   que e um filesystem efemero: os dados sao apagados a cada deploy,
+#   reinicio ou spin-down (o Render desliga o servico apos 15 min sem trafego).
+#   O seedIfEmpty() repovoa os dados de demo a cada boot, entao o site nunca
+#   fica vazio — mas cadastros e contribuicoes reais nao persistem.
+#
+#   Para persistir de verdade: mude `plan` para `starter` (ou superior)
+#   e descomente o bloco `disk` abaixo.
+services:
+  - type: web
+    name: ponte
+    runtime: docker
+    plan: free
+    # Regioes disponiveis: oregon | ohio | virginia | frankfurt | singapore.
+    # virginia costuma ter a menor latencia para o Brasil.
+    region: virginia
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /
+    autoDeploy: true
+    envVars:
+      - key: DATABASE_PATH
+        value: /app/data/ponte.db
+    # Descomente ao migrar para um plano pago:
+    # disk:
+    #   name: ponte-data
+    #   mountPath: /app/data
+    #   sizeGB: 1

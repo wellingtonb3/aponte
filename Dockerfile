@@ -11,8 +11,9 @@ RUN npm run build
 
 FROM node:24-alpine AS runner
 WORKDIR /app
+# PORT nao e fixado de proposito: o Render injeta PORT em runtime (default 10000)
+# e o server.js do Next escuta em process.env.PORT (fallback 3000 no docker local).
 ENV NODE_ENV=production \
-    PORT=3000 \
     HOSTNAME=0.0.0.0 \
     DATABASE_PATH=/app/data/ponte.db
 RUN mkdir -p /app/data

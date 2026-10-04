@@ -57,10 +57,29 @@ docker run -p 3000:3000 -v ponte-data:/app/data ponte
 O volume `/app/data` persiste o SQLite. Para apontar o banco para outro
 caminho, use a env `DATABASE_PATH`.
 
-No Railway/Render: aponte para o Dockerfile e anexe um volume em `/app/data`.
+## Deploy no Render
+
+O repositorio inclui um `render.yaml` (Blueprint) com o servico Docker,
+`DATABASE_PATH` e o health check ja configurados: no Render, use
+**New > Blueprint** e aponte para este repositorio.
+
+### Plano free — atencao
+
+O plano free **nao suporta disco persistente**. O SQLite vive em `/app/data`,
+um filesystem efemero: os dados sao apagados a cada deploy, reinicio ou
+spin-down (o Render desliga o servico apos 15 min sem trafego).
+
+O `seedIfEmpty()` repovoa os dados de demo a cada boot, entao o site nunca
+aparece vazio — mas cadastros e contribuicoes reais **nao persistem**.
+
+Para persistir de verdade:
+
+- **Opcao A**: mude o `plan` para `starter` (pago) e descomente o bloco `disk`
+  no `render.yaml` (mount em `/app/data`).
+- **Opcao B**: migre o banco para um servico externo (ex.: Turso/libSQL).
 
 ## Nota sobre o `.npmrc`
 
-O arquivo `.npmrc` aponta para `registry.npmmirror.com` porque o registry
-oficial do npm nao estava acessivel na rede onde o projeto foi criado.
-Se `registry.npmjs.org` funcionar na sua rede, voce pode remover o arquivo.
+O `.npmrc` e todas as URLs do `package-lock.json` apontam para o registry
+oficial (`registry.npmjs.org`). Se sua rede tiver alguma restricao, ajuste
+o registro conforme necessario.
