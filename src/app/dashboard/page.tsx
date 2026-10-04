@@ -100,8 +100,8 @@ function OpportunityEditor({ myOpps }: { myOpps: OppRow[] }) {
       {myOpps.length > 0 && (
         <ul className="mt-4 space-y-2">
           {myOpps.map((o) => (
-            <li key={o.id} className="flex items-center justify-between gap-3 rounded-lg bg-raised px-3 py-2 text-sm">
-              <span>
+            <li key={o.id} className="flex flex-wrap items-center justify-between gap-3 rounded-lg bg-raised px-3 py-2 text-sm">
+              <span className="min-w-0 break-words">
                 <Badge kind={o.type} label={TYPE_LABELS[o.type]} /> {o.title}
               </span>
               <form action={deleteOpportunity}>
@@ -124,7 +124,7 @@ function PendingRequests({ rows }: { rows: LinkRow[] }) {
       <ul className="mt-3 space-y-3">
         {rows.map((r) => (
           <li key={r.mentorship_id} className="flex flex-wrap items-center justify-between gap-3">
-            <div>
+            <div className="min-w-0">
               <Link href={`/pessoas/${r.id}`} className="font-medium text-accent hover:underline">
                 {r.name}
               </Link>
@@ -158,8 +158,8 @@ function NetworkList({ rows, title, empty }: { rows: LinkRow[]; title: string; e
       ) : (
         <ul className="mt-3 space-y-3">
           {rows.map((r) => (
-            <li key={r.mentorship_id} className="flex items-center justify-between gap-3">
-              <div>
+            <li key={r.mentorship_id} className="flex flex-wrap items-center justify-between gap-3">
+              <div className="min-w-0">
                 <Link href={`/pessoas/${r.id}`} className="font-medium text-accent hover:underline">
                   {r.name}
                 </Link>
@@ -260,8 +260,8 @@ export default async function DashboardPage({
                   <h2 className="font-semibold">Solicitacoes enviadas</h2>
                   <ul className="mt-3 space-y-2">
                     {sentPending.map((r) => (
-                      <li key={r.mentorship_id} className="flex items-center justify-between text-sm">
-                        <span>
+                      <li key={r.mentorship_id} className="flex flex-wrap items-center justify-between gap-2 text-sm">
+                        <span className="min-w-0 break-words">
                           {r.name} <Badge kind="pending" label="aguardando" />
                         </span>
                         <form action={removeMentorship}>
@@ -311,8 +311,8 @@ export default async function DashboardPage({
                 <ul className="mt-4 space-y-3">
                   {myContribs.map((c) => (
                     <li key={c.id} className="rounded-lg bg-raised px-3 py-2">
-                      <div className="flex items-center justify-between gap-2">
-                        <span className="text-sm font-medium">
+                      <div className="flex flex-wrap items-center justify-between gap-2">
+                        <span className="min-w-0 break-words text-sm font-medium">
                           <Badge kind={c.type} label={TYPE_LABELS[c.type] ?? c.type} /> {c.title}
                         </span>
                         <form action={deleteContribution}>

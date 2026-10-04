@@ -65,11 +65,11 @@ export default async function TalentosPage({
               <Link href={`/pessoas/${t.id}`} className="font-semibold text-accent hover:underline">
                 {t.name}
               </Link>
-              <p className="text-sm text-muted">{t.headline}</p>
+              <p className="break-words text-sm text-muted">{t.headline}</p>
               <div className="mt-3">
                 <SkillChips skills={t.skills} />
               </div>
-              <div className="mt-4 flex gap-4 text-xs text-muted">
+              <div className="mt-4 flex flex-wrap gap-x-4 gap-y-1 text-xs text-muted">
                 <span>{t.contributions} contribuicoes</span>
                 <span className={t.endorsements > 0 ? "font-medium text-emerald-400" : ""}>
                   {t.endorsements} recomendacoes

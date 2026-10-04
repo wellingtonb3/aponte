@@ -83,12 +83,12 @@ export default async function PessoaPage({
       <Flash params={sp} />
       <Card>
         <div className="flex flex-wrap items-start justify-between gap-4">
-          <div>
-            <div className="flex items-center gap-3">
-              <h1 className="text-2xl font-bold">{profile.name}</h1>
+          <div className="min-w-0">
+            <div className="flex flex-wrap items-center gap-3">
+              <h1 className="break-words text-2xl font-bold">{profile.name}</h1>
               <Badge kind={profile.role} />
             </div>
-            <p className="mt-1 text-muted">{profile.headline}</p>
+            <p className="mt-1 break-words text-muted">{profile.headline}</p>
           </div>
           {viewer?.role === "mentee" &&
             isMentorSide &&
@@ -104,13 +104,13 @@ export default async function PessoaPage({
               </form>
             ))}
         </div>
-        {profile.bio && <p className="mt-4 text-sm text-fg/85">{profile.bio}</p>}
+        {profile.bio && <p className="mt-4 break-words text-sm text-fg/85">{profile.bio}</p>}
         <div className="mt-4">
           <SkillChips skills={profile.skills} />
         </div>
         {viewer && (
           <p className="mt-4 text-sm text-muted">
-            Contato: <span className="font-mono">{profile.email}</span>
+            Contato: <span className="break-all font-mono">{profile.email}</span>
           </p>
         )}
       </Card>
@@ -127,7 +127,7 @@ export default async function PessoaPage({
               {contributions.map((c) => (
                 <li key={c.id} className="border-b border-line pb-4 last:border-0 last:pb-0">
                   <div className="flex flex-wrap items-center justify-between gap-2">
-                    <span className="font-medium">
+                    <span className="min-w-0 break-words font-medium">
                       <Badge kind={c.type} label={TYPE_LABELS[c.type] ?? c.type} />{" "}
                       {c.url ? (
                         <a href={c.url} target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">
@@ -181,7 +181,7 @@ export default async function PessoaPage({
                     <Link href={`/pessoas/${n.id}`} className="font-medium text-accent hover:underline">
                       {n.name}
                     </Link>
-                    <p className="text-xs text-muted">{n.headline}</p>
+                    <p className="break-words text-xs text-muted">{n.headline}</p>
                   </li>
                 ))}
               </ul>

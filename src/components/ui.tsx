@@ -91,10 +91,10 @@ export function Empty({ children }: { children: ReactNode }) {
 }
 
 export const inputCls =
-  "w-full rounded-md border border-line bg-ink px-3 py-2 text-sm text-fg placeholder:text-muted/50 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent/40";
+  "w-full rounded-md border border-line bg-ink px-3 py-2.5 text-sm text-fg placeholder:text-muted/50 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent/40";
 
 export const btnCls =
-  "inline-flex items-center justify-center rounded-md bg-accent px-4 py-2 text-sm font-semibold text-ink hover:bg-accent-strong transition-colors cursor-pointer";
+  "inline-flex items-center justify-center rounded-md bg-accent px-4 py-2.5 text-sm font-semibold text-ink hover:bg-accent-strong transition-colors cursor-pointer";
 
 export const btnSecondaryCls =
-  "inline-flex items-center justify-center rounded-md border border-line bg-transparent px-4 py-2 text-sm font-medium text-fg hover:border-fg/40 hover:bg-raised transition-colors cursor-pointer";
+  "inline-flex items-center justify-center rounded-md border border-line bg-transparent px-4 py-2.5 text-sm font-medium text-fg hover:border-fg/40 hover:bg-raised transition-colors cursor-pointer";

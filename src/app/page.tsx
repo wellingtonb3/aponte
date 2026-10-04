@@ -106,7 +106,7 @@ export default function Home() {
       <section className="grid items-center gap-14 py-16 sm:py-24 lg:grid-cols-[1.05fr_0.95fr]">
         <div>
           <Eyebrow>Comunidade aberta de mentoria</Eyebrow>
-          <h1 className="mt-6 text-5xl font-bold leading-[1.05] tracking-tight sm:text-6xl xl:text-7xl">
+          <h1 className="mt-6 text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl xl:text-7xl">
             A ponte entre quem
             <br />
             ja trilhou o caminho

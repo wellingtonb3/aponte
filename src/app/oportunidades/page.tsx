@@ -72,7 +72,7 @@ export default async function OportunidadesPage({
           {rows.map((o) => (
             <Card key={o.id}>
               <div className="flex flex-wrap items-start justify-between gap-2">
-                <div>
+                <div className="min-w-0 break-words">
                   <Badge kind={o.type} label={TYPE_LABELS[o.type]} />{" "}
                   <span className="font-semibold">{o.title}</span>
                 </div>

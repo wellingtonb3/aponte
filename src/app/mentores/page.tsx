@@ -77,7 +77,7 @@ export default async function MentoresPage({
             return (
               <Card key={m.id}>
                 <div className="flex items-start justify-between gap-2">
-                  <div>
+                  <div className="min-w-0">
                     <Link href={`/pessoas/${m.id}`} className="font-semibold text-accent hover:underline">
                       {m.name}
                     </Link>
@@ -88,7 +88,7 @@ export default async function MentoresPage({
                 <div className="mt-3">
                   <SkillChips skills={m.skills} />
                 </div>
-                <div className="mt-4 flex items-center justify-between">
+                <div className="mt-4 flex flex-wrap items-center justify-between gap-2">
                   <span className="text-xs text-muted">
                     {m.mentees} {m.mentees === 1 ? "pessoa na rede" : "pessoas na rede"}
                   </span>
